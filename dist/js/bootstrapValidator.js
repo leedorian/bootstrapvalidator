@@ -2,7 +2,7 @@
  * BootstrapValidator (http://bootstrapvalidator.com)
  * The best jQuery plugin to validate form fields. Designed to use with Bootstrap 3
  *
- * @version     v0.5.2-dev, built on 2014-09-02 11:09:14 PM
+ * @version     v0.5.2-dev, built on 2014-09-24 3:49:02 PM
  * @author      https://twitter.com/nghuuphuoc
  * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
  * @license     MIT
@@ -294,7 +294,21 @@
                 $field.off(events).on(events, function() {
                     that.updateStatus($(this), that.STATUS_NOT_VALIDATED);
                 });
-
+                //show tooltip or popover message when get focus
+                $field.off("focus.showmsg.bv").on("focus.showmsg.bv", function() {
+                    var $icon =$parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
+                    if($icon.length>0 && container){
+                        switch(container){
+                            case "tooltip":
+                                $icon.tooltip('show');
+                                break;
+                            case "popover":
+                                $icon.popover('show');
+                                break;
+                        }
+                    }
+                });
+                
                 // Create help block elements for showing the error messages
                 $field.data('bv.messages', $message);
                 for (validatorName in this.options.fields[field].validators) {
@@ -336,7 +350,9 @@
                     && this.options.feedbackIcons.validating && this.options.feedbackIcons.invalid && this.options.feedbackIcons.valid
                     && (!updateAll || i === total - 1))
                 {
-                    $parent.removeClass('has-success').removeClass('has-error').addClass('has-feedback');
+                    //$parent.removeClass('has-success').removeClass('has-error').addClass('has-feedback');
+                    //keep error message populated from back end
+                    $parent.addClass('has-feedback');
                     var $icon = $('<i/>')
                                     .css('display', 'none')
                                     .addClass('form-control-feedback')
@@ -354,15 +370,9 @@
                         }
                     }
 
-                    // The feedback icon does not render correctly if there is no label
-                    // https://github.com/twbs/bootstrap/issues/12873
-                    if ($parent.find('label').length === 0) {
-                        $icon.css('top', 0);
-                    }
                     // Fix feedback icons in input-group
                     if ($parent.find('.input-group').length !== 0) {
                         $icon.css({
-                            'top': 0,
                             'z-index': 100
                         }).insertAfter($parent.find('.input-group').eq(0));
                     }
@@ -1004,7 +1014,8 @@
                                     placement: 'top',
                                     title: $allErrors.filter('[data-bv-result="' + that.STATUS_INVALID + '"]').eq(0).html()
                                 })
-                                : $icon.css('cursor', '').tooltip('destroy');
+                                /* multiple validator, tooltip is destroyed by last NOT_VALIDATED validator*/
+                                : $icon.tooltip('hide');
                         break;
                     // ... or popover
                     case ($icon && 'popover' === container):
@@ -1016,7 +1027,8 @@
                                     placement: 'top',
                                     trigger: 'hover click'
                                 })
-                                : $icon.css('cursor', '').popover('destroy');
+                                /* multiple validator, popover is destroyed by last NOT_VALIDATED validator*/
+                                : $icon.popover('hide');
                         break;
                     default:
                         (status === this.STATUS_INVALID) ? $errors.show() : $errors.hide();

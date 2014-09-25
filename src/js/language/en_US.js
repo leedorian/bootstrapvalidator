@@ -85,7 +85,7 @@
                 CR: 'Costa Rica',
                 CV: 'Cape Verde',
                 CY: 'Cyprus',
-                CZ: 'Czech',
+                CZ: 'Czech Republic',
                 DE: 'Germany',
                 DK: 'Denmark',
                 DO: 'Dominica',
@@ -156,7 +156,8 @@
                 BR: 'Brazil',
                 CH: 'Switzerland',
                 CL: 'Chile',
-                CZ: 'Czech',
+                CN: 'China',
+                CZ: 'Czech Republic',
                 DK: 'Denmark',
                 EE: 'Estonia',
                 ES: 'Spain',
@@ -175,6 +176,7 @@
                 SI: 'Slovenia',
                 SK: 'Slovakia',
                 SM: 'San Marino',
+                TH: 'Thailand',
                 ZA: 'South Africa'
             }
         },
@@ -230,13 +232,19 @@
             countries: {
                 BR: 'Brazil',
                 CN: 'China',
+                CZ: 'Czech Republic',
+                DK: 'Denmark',
                 ES: 'Spain',
                 FR: 'France',
                 GB: 'United Kingdom',
                 MA: 'Morocco',
                 PK: 'Pakistan',
                 RO: 'Romania',
-                US: 'USA'
+                RU: 'Russia',
+                SK: 'Slovakia',
+                TH: 'Thailand',
+                US: 'USA',
+                VE: 'Venezuela'
             }
         },
         regexp: {
@@ -288,13 +296,13 @@
                 BR: 'Brazil',
                 CH: 'Switzerland',
                 CY: 'Cyprus',
-                CZ: 'Czech',
+                CZ: 'Czech Republic',
                 DE: 'Germany',
                 DK: 'Denmark',
                 EE: 'Estonia',
                 ES: 'Spain',
                 FI: 'Finland',
-                FR: 'French',
+                FR: 'France',
                 GB: 'United Kingdom',
                 GR: 'Greece',
                 EL: 'Greece',
@@ -331,14 +339,17 @@
             countries: {
                 BR: 'Brazil',
                 CA: 'Canada',
+                CZ: 'Czech Republic',
                 DK: 'Denmark',
                 GB: 'United Kingdom',
                 IT: 'Italy',
                 MA: 'Morocco',
                 NL: 'Netherlands',
                 RO: 'Romania',
+                RU: 'Russia',
                 SE: 'Sweden',
                 SG: 'Singapore',
+                SK: 'Slovakia',
                 US: 'USA'
             }
         }

@@ -10,13 +10,13 @@
             BR: 'Brazil',
             CH: 'Switzerland',
             CY: 'Cyprus',
-            CZ: 'Czech',
+            CZ: 'Czech Republic',
             DE: 'Germany',
             DK: 'Denmark',
             EE: 'Estonia',
             ES: 'Spain',
             FI: 'Finland',
-            FR: 'French',
+            FR: 'France',
             GB: 'United Kingdom',
             GR: 'Greek',
             EL: 'Greek',
@@ -1216,10 +1216,10 @@
          * @returns {Boolean}
          */
         _ru: function(value) {
-            if (/^RU([0-9]{9}|[0-9]{12})$/.test(value)) {
+            if (/^RU([0-9]{10}|[0-9]{12})$/.test(value)) {
                 value = value.substr(2);
             }
-            if (!/^([0-9]{9}|[0-9]{12})$/.test(value)) {
+            if (!/^([0-9]{10}|[0-9]{12})$/.test(value)) {
                 return false;
             }
 

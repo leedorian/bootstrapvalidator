@@ -156,6 +156,7 @@
                 BR: 'brazil',
                 CH: 'svájci',
                 CL: 'chilei',
+                CN: 'Kína',
                 CZ: 'cseh',
                 DK: 'dán',
                 EE: 'észt',
@@ -175,6 +176,7 @@
                 SI: 'szlovén',
                 SK: 'szlovák',
                 SM: 'San Marino beli',
+                TH: 'thaiföld',
                 ZA: 'dél afrikai'
             }
         },
@@ -230,13 +232,19 @@
             countries: {
                 BR: 'brazil',
                 CN: 'kína',
+                CZ: 'cseh',
+                DK: 'dán',
                 ES: 'spanyol',
                 FR: 'francia',
                 GB: 'Egyesült Királyság beli',
                 MA: 'Marokkó',
                 PK: 'Pakisztán',
                 RO: 'Románia',
-                US: 'Egyesült Államok beli'
+                RU: 'orosz',
+                SK: 'szlovák',
+                TH: 'thaiföld',
+                US: 'Egyesült Államok beli',
+                VE: 'venezuelai'
             }
         },
         regexp: {
@@ -331,14 +339,17 @@
             countries: {
                 BR: 'brazil',
                 CA: 'kanadai',
+                CZ: 'cseh',
                 DK: 'dán',
                 GB: 'Egyesült Királyság beli',
                 IT: 'olasz',
                 MA: 'marokkó',
                 NL: 'holland',
                 RO: 'románia',
+                RU: 'orosz',
                 SE: 'svájci',
                 SG: 'singaporei',
+                SK: 'szlovák',
                 US: 'Egyesült Államok beli'
             }
         }

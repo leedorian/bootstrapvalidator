@@ -156,6 +156,7 @@
                 BR: 'Brazil',
                 CH: 'Thuỵ Sĩ',
                 CL: 'Chi Lê',
+                CN: 'Trung Quốc',
                 CZ: 'Séc',
                 DK: 'Đan Mạch',
                 EE: 'Estonia',
@@ -175,6 +176,7 @@
                 SI: 'Slovenia',
                 SK: 'Slovakia',
                 SM: 'San Marino',
+                TH: 'Thái Lan',
                 ZA: 'Nam Phi'
             }
         },
@@ -230,13 +232,19 @@
             countries: {
                 BR: 'Brazil',
                 CN: 'Trung Quốc',
+                CZ: 'Séc',
+                DK: 'Đan Mạch',
                 ES: 'Tây Ban Nha',
                 FR: 'Pháp',
                 GB: 'Vương quốc Anh',
                 MA: 'Maroc',
                 PK: 'Pakistan',
                 RO: 'Romania',
-                US: 'Mỹ'
+                RU: 'Nga',
+                SK: 'Slovakia',
+                TH: 'Thái Lan',
+                US: 'Mỹ',
+                VE: 'Venezuela'
             }
         },
         regexp: {
@@ -327,18 +335,21 @@
         zipCode: {
             'default': 'Vui lòng nhập mã bưu điện hợp lệ',
             countryNotSupported: 'Mã quốc gia %s không được hỗ trợ',
-            country: 'Vui lòng nhập mã bưu điện của %s',
+            country: 'Vui lòng nhập mã bưu điện hợp lệ của %s',
             countries: {
                 BR: 'Brazil',
                 CA: 'Canada',
+                CZ: 'Séc',
                 DK: 'Đan Mạch',
                 GB: 'Vương quốc Anh',
                 IT: 'Ý',
                 MA: 'Maroc',
                 NL: 'Hà Lan',
                 RO: 'Romania',
+                RU: 'Nga',
                 SE: 'Thuỵ Sĩ',
                 SG: 'Singapore',
+                SK: 'Slovakia',
                 US: 'Mỹ'
             }
         }

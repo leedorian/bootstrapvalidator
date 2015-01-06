@@ -1,21 +1,33 @@
+/**
+ * creditCard validator
+ *
+ * @link        http://formvalidation.io/validators/creditCard/
+ * @author      https://twitter.com/nghuuphuoc
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
+ */
 (function($) {
-    $.fn.bootstrapValidator.i18n.creditCard = $.extend($.fn.bootstrapValidator.i18n.creditCard || {}, {
-        'default': 'Please enter a valid credit card number'
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
+        'en_US': {
+            creditCard: {
+                'default': 'Please enter a valid credit card number'
+            }
+        }
     });
 
-    $.fn.bootstrapValidator.validators.creditCard = {
+    FormValidation.Validator.creditCard = {
         /**
          * Return true if the input value is valid credit card number
          * Based on https://gist.github.com/DiegoSalazar/4075533
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} [options] Can consist of the following key:
          * - message: The invalid message
-         * @returns {Boolean}
+         * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'creditCard');
             if (value === '') {
                 return true;
             }
@@ -26,7 +38,7 @@
             }
             value = value.replace(/\D/g, '');
 
-            if (!$.fn.bootstrapValidator.helpers.luhn(value)) {
+            if (!FormValidation.Helper.luhn(value)) {
                 return false;
             }
 
@@ -92,7 +104,10 @@
                     if (value.substr(0, cards[type].prefix[i].length) === cards[type].prefix[i]     // Check the prefix
                         && $.inArray(value.length, cards[type].length) !== -1)                      // and length
                     {
-                        return true;
+                        return {
+                            valid: true,
+                            type: type
+                        };
                     }
                 }
             }
@@ -100,4 +115,4 @@
             return false;
         }
     };
-}(window.jQuery));
+}(jQuery));

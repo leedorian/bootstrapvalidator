@@ -1,50 +1,61 @@
+/**
+ * vat validator
+ *
+ * @link        http://formvalidation.io/validators/vat/
+ * @author      https://twitter.com/nghuuphuoc
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
+ */
 (function($) {
-    $.fn.bootstrapValidator.i18n.vat = $.extend($.fn.bootstrapValidator.i18n.vat || {}, {
-        'default': 'Please enter a valid VAT number',
-        countryNotSupported: 'The country code %s is not supported',
-        country: 'Please enter a valid VAT number in %s',
-        countries: {
-            AT: 'Austria',
-            BE: 'Belgium',
-            BG: 'Bulgaria',
-            BR: 'Brazil',
-            CH: 'Switzerland',
-            CY: 'Cyprus',
-            CZ: 'Czech Republic',
-            DE: 'Germany',
-            DK: 'Denmark',
-            EE: 'Estonia',
-            ES: 'Spain',
-            FI: 'Finland',
-            FR: 'France',
-            GB: 'United Kingdom',
-            GR: 'Greek',
-            EL: 'Greek',
-            HU: 'Hungary',
-            HR: 'Croatia',
-            IE: 'Ireland',
-            IS: 'Iceland',
-            IT: 'Italy',
-            LT: 'Lithuania',
-            LU: 'Luxembourg',
-            LV: 'Latvia',
-            MT: 'Malta',
-            NL: 'Netherlands',
-            NO: 'Norway',
-            PL: 'Poland',
-            PT: 'Portugal',
-            RO: 'Romania',
-            RU: 'Russia',
-            RS: 'Serbia',
-            SE: 'Sweden',
-            SI: 'Slovenia',
-            SK: 'Slovakia',
-            VE: 'Venezuela',
-            ZA: 'South Africa'
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
+        'en_US': {
+            vat: {
+                'default': 'Please enter a valid VAT number',
+                country: 'Please enter a valid VAT number in %s',
+                countries: {
+                    AT: 'Austria',
+                    BE: 'Belgium',
+                    BG: 'Bulgaria',
+                    BR: 'Brazil',
+                    CH: 'Switzerland',
+                    CY: 'Cyprus',
+                    CZ: 'Czech Republic',
+                    DE: 'Germany',
+                    DK: 'Denmark',
+                    EE: 'Estonia',
+                    ES: 'Spain',
+                    FI: 'Finland',
+                    FR: 'France',
+                    GB: 'United Kingdom',
+                    GR: 'Greek',
+                    EL: 'Greek',
+                    HU: 'Hungary',
+                    HR: 'Croatia',
+                    IE: 'Ireland',
+                    IS: 'Iceland',
+                    IT: 'Italy',
+                    LT: 'Lithuania',
+                    LU: 'Luxembourg',
+                    LV: 'Latvia',
+                    MT: 'Malta',
+                    NL: 'Netherlands',
+                    NO: 'Norway',
+                    PL: 'Poland',
+                    PT: 'Portugal',
+                    RO: 'Romania',
+                    RU: 'Russia',
+                    RS: 'Serbia',
+                    SE: 'Sweden',
+                    SI: 'Slovenia',
+                    SK: 'Slovakia',
+                    VE: 'Venezuela',
+                    ZA: 'South Africa'
+                }
+            }
         }
     });
 
-    $.fn.bootstrapValidator.validators.vat = {
+    FormValidation.Validator.vat = {
         html5Attributes: {
             message: 'message',
             country: 'country'
@@ -60,7 +71,7 @@
         /**
          * Validate an European VAT number
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Consist of key:
          * - message: The invalid message
@@ -72,12 +83,13 @@
          * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'vat');
             if (value === '') {
                 return true;
             }
 
-            var country = options.country;
+            var locale  = validator.getLocale(),
+                country = options.country;
             if (!country) {
                 country = value.substr(0, 2);
             } else if (typeof country !== 'string' || $.inArray(country.toUpperCase(), this.COUNTRY_CODES) === -1) {
@@ -86,10 +98,7 @@
             }
 
             if ($.inArray(country, this.COUNTRY_CODES) === -1) {
-                return {
-                    valid: false,
-                    message: $.fn.bootstrapValidator.helpers.format($.fn.bootstrapValidator.i18n.vat.countryNotSupported, country)
-                };
+                return true;
             }
 
             var method  = ['_', country.toLowerCase()].join('');
@@ -97,7 +106,7 @@
                 ? true
                 : {
                     valid: false,
-                    message: $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n.vat.country, $.fn.bootstrapValidator.i18n.vat.countries[country.toUpperCase()])
+                    message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].vat.country, FormValidation.I18n[locale].vat.countries[country.toUpperCase()])
                 };
         },
 
@@ -221,7 +230,7 @@
                             month -= 20;
                         }
 
-                        if (!$.fn.bootstrapValidator.helpers.date(year, month, day)) {
+                        if (!FormValidation.Helper.date(year, month, day)) {
                             return false;
                         }
 
@@ -469,7 +478,7 @@
                     year += 100;
                 }
 
-                if (!$.fn.bootstrapValidator.helpers.date(year, month, day)) {
+                if (!FormValidation.Helper.date(year, month, day)) {
                     return false;
                 }
 
@@ -505,7 +514,7 @@
                 return false;
             }
 
-            return $.fn.bootstrapValidator.helpers.mod11And10(value);
+            return FormValidation.Helper.mod11And10(value);
         },
 
         /**
@@ -676,7 +685,7 @@
                 return false;
             }
 
-            if (!$.fn.bootstrapValidator.helpers.luhn(value.substr(2))) {
+            if (!FormValidation.Helper.luhn(value.substr(2))) {
                 return false;
             }
 
@@ -834,7 +843,7 @@
                 return false;
             }
 
-            return $.fn.bootstrapValidator.helpers.mod11And10(value);
+            return FormValidation.Helper.mod11And10(value);
         },
 
         /**
@@ -925,7 +934,7 @@
                 return false;
             }
 
-            return $.fn.bootstrapValidator.helpers.luhn(value);
+            return FormValidation.Helper.luhn(value);
         },
 
         /**
@@ -1024,7 +1033,7 @@
                     year  = parseInt(value.substr(4, 2), 10);
                 year = year + 1800 + parseInt(value.charAt(6), 10) * 100;
 
-                if (!$.fn.bootstrapValidator.helpers.date(year, month, day)) {
+                if (!FormValidation.Helper.date(year, month, day)) {
                     return false;
                 }
 
@@ -1306,7 +1315,7 @@
             }
 
             value = value.substr(0, 10);
-            return $.fn.bootstrapValidator.helpers.luhn(value);
+            return FormValidation.Helper.luhn(value);
         },
 
         /**
@@ -1314,16 +1323,19 @@
          * Examples:
          * - Valid: SI50223054
          * - Invalid: SI50223055
+         * - Invalid: SI09999990
          *
          * @param {String} value VAT number
          * @returns {Boolean}
          */
         _si: function(value) {
-            if (/^SI[0-9]{8}$/.test(value)) {
-                value = value.substr(2);
-            }
-            if (!/^[0-9]{8}$/.test(value)) {
+            // The Slovenian VAT numbers don't start with zero
+            var res = value.match(/^(SI)?([1-9][0-9]{7})$/);
+            if (!res) {
                 return false;
+            }
+            if (res[1]) {
+                value = value.substr(2);
             }
 
             var sum    = 0,
@@ -1414,4 +1426,4 @@
             return /^4[0-9]{9}$/.test(value);
         }
     };
-}(window.jQuery));
+}(jQuery));

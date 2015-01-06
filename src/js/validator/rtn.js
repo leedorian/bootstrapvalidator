@@ -1,23 +1,35 @@
+/**
+ * rtn validator
+ *
+ * @link        http://formvalidation.io/validators/rtn/
+ * @author      https://twitter.com/nghuuphuoc
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
+ */
 (function($) {
-    $.fn.bootstrapValidator.i18n.rtn = $.extend($.fn.bootstrapValidator.i18n.rtn || {}, {
-        'default': 'Please enter a valid RTN number'
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
+        'en_US': {
+            rtn: {
+                'default': 'Please enter a valid RTN number'
+            }
+        }
     });
 
-    $.fn.bootstrapValidator.validators.rtn = {
+    FormValidation.Validator.rtn = {
         /**
          * Validate a RTN (Routing transit number)
          * Examples:
          * - Valid: 021200025, 789456124
          *
          * @see http://en.wikipedia.org/wiki/Routing_transit_number
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - message: The invalid message
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'rtn');
             if (value === '') {
                 return true;
             }
@@ -35,4 +47,4 @@
             return (sum !== 0 && sum % 10 === 0);
         }
     };
-}(window.jQuery));
+}(jQuery));

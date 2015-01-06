@@ -1,9 +1,21 @@
+/**
+ * isbn validator
+ *
+ * @link        http://formvalidation.io/validators/isbn/
+ * @author      https://twitter.com/nghuuphuoc
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
+ */
 (function($) {
-    $.fn.bootstrapValidator.i18n.isbn = $.extend($.fn.bootstrapValidator.i18n.isbn || {}, {
-        'default': 'Please enter a valid ISBN number'
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
+        'en_US': {
+            isbn: {
+                'default': 'Please enter a valid ISBN number'
+            }
+        }
     });
 
-    $.fn.bootstrapValidator.validators.isbn = {
+    FormValidation.Validator.isbn = {
         /**
          * Return true if the input value is a valid ISBN 10 or ISBN 13 number
          * Examples:
@@ -15,14 +27,14 @@
          * ISBN 13: 978-0-306-40615-6
          *
          * @see http://en.wikipedia.org/wiki/International_Standard_Book_Number
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} [options] Can consist of the following keys:
          * - message: The invalid message
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'isbn');
             if (value === '') {
                 return true;
             }
@@ -83,4 +95,4 @@
             }
         }
     };
-}(window.jQuery));
+}(jQuery));

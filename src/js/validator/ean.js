@@ -1,9 +1,21 @@
+/**
+ * ean validator
+ *
+ * @link        http://formvalidation.io/validators/ean/
+ * @author      https://twitter.com/nghuuphuoc
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
+ */
 (function($) {
-    $.fn.bootstrapValidator.i18n.ean = $.extend($.fn.bootstrapValidator.i18n.ean || {}, {
-        'default': 'Please enter a valid EAN number'
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
+        'en_US': {
+            ean: {
+                'default': 'Please enter a valid EAN number'
+            }
+        }
     });
 
-    $.fn.bootstrapValidator.validators.ean = {
+    FormValidation.Validator.ean = {
         /**
          * Validate EAN (International Article Number)
          * Examples:
@@ -11,14 +23,14 @@
          * - Invalid: 73513536
          *
          * @see http://en.wikipedia.org/wiki/European_Article_Number
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - message: The invalid message
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'ean');
             if (value === '') {
                 return true;
             }
@@ -37,4 +49,4 @@
             return (sum + '' === value.charAt(length - 1));
         }
     };
-}(window.jQuery));
+}(jQuery));

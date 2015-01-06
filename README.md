@@ -1,77 +1,86 @@
-# BootstrapValidator - [v0.5.1](http://bootstrapvalidator.com/getting-started/#download)
+# FormValidation - [v0.6.0](http://formvalidation.io/download/)
 
-[http://bootstrapvalidator.com](http://bootstrapvalidator.com) - The best jQuery plugin to validate form fields. Designed to use with [Bootstrap 3](http://getbootstrap.com)
+[http://formvalidation.io](http://formvalidation.io) - The best [jQuery](http://jquery.com/) plugin to validate form fields, designed to use with:
 
-![Screenshot](screenshots/screenshot.png)
+- [x] [Bootstrap](http://getbootstrap.com/)
+- [x] [Foundation](http://foundation.zurb.com/)
+- [x] [Pure](http://purecss.io/)
+- [x] [Semantic UI](http://semantic-ui.com/)
+- [x] [UIKit](http://getuikit.com/)
 
-## [Help the project](https://pledgie.com/campaigns/24885)
+It's developed from scratch by [@nghuuphuoc](http://twitter.com/nghuuphuoc).
 
-I've been spending a lot of time to work on this plugin. If it is useful to you, please consider to help the project by making a small donation:
+__Required__: [jQuery 1.9.1+](http://jquery.com/) and [Bootstrap 3+](http://getbootstrap.com/)
 
-<a href="https://pledgie.com/campaigns/24885"><img alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!" src="https://pledgie.com/campaigns/24885.png?skin_name=chrome" border="0" /></a>
+Screenshots first because we love it!
 
-Also, you can make me feel happy by [tweeting](https://twitter.com/intent/tweet?hashtags=javascript,jquery,twbootstrap&original_referer=http://github.com/nghuuphuoc/bootstrapvalidator&text=BootstrapValidator%20is%20the%20best%20jQuery%20plugin%20to%20validate%20form%20fields&url=http://bootstrapvalidator.com) about it and [staring](https://github.com/nghuuphuoc/bootstrapvalidator/stargazers) the project on Github.
+__Validating Bootstrap form__
+
+![Screenshot](screenshots/bootstrap.gif)
+
+__Validating Foundation form__
+
+![Screenshot](screenshots/foundation.gif)
+
+__Validating Pure form__
+
+![Screenshot](screenshots/pure.gif)
+
+__Validating Semantic UI form__
+
+![Screenshot](screenshots/semantic.gif)
+
+__Validating UI Kit form__
+
+![Screenshot](screenshots/uikit.gif)
 
 ## Live demo
 
-http://bootstrapvalidator.com/examples/
+http://formvalidation.io/examples/
 
 There are also many examples located in the [demo](demo) directory.
 
+You also can run the ```demo``` locally by:
+
+* Clone the repo: 
+
+```
+git clone https://github.com/formvalidation/formvalidation.git
+```
+
+* Go to the cloned directory and run the command: 
+
+```
+python -m SimpleHTTPServer 8000
+```
+
+* Access the demo at 
+
+```
+http://localhost:8000/demo/the_demo_file_here.html
+```
+
 ## Features
 
-See [official website](http://bootstrapvalidator.com) for the full list of features
+See the [official website](http://formvalidation.io) for the full list of features
 
-## Required
-
-* [jQuery](http://jquery.com/)
-* [Bootstrap 3](http://getbootstrap.com/)
- 
 ## Download
 
-Latest version: [v0.5.1](http://bootstrapvalidator.com/getting-started/#download), released on 2014-08-22.
-
-For older versions, look at the [Releases](https://github.com/nghuuphuoc/bootstrapvalidator/releases) page.
+* Latest version: [v0.6.0](http://formvalidation.io/download/), released on 2015-01-06
+* For older versions, look at the [Releases](https://github.com/formvalidation/formvalidation/releases) page
+* Release History: Look at the [Change Log](CHANGELOG.md)
 
 ## Documentation
 
-* [Official website](http://bootstrapvalidator.com)
-* [Official website source](https://github.com/nghuuphuoc/bootstrapvalidator/tree/gh-pages)
-
-## Release History
-
-Look at the [Change Log](CHANGELOG.md)
+* [Official website](http://formvalidation.io)
 
 ## Author
 
-The __BootstrapValidator__ plugin is written by Nguyen Huu Phuoc, aka @nghuuphuoc
+The __FormValidation__ plugin is written by Nguyen Huu Phuoc, aka @nghuuphuoc
 
 * [http://twitter.com/nghuuphuoc](http://twitter.com/nghuuphuoc)
 * [http://github.com/nghuuphuoc](http://github.com/nghuuphuoc)
 
-Big thanks to the [contributors](CONTRIBUTORS.md).
-
 ## License
 
-```
-The MIT License (MIT)
-
-Copyright (c) 2013 - 2014 Nguyen Huu Phuoc
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-```
+For more information about the license, see http://formvalidation.io/license/

@@ -1,24 +1,36 @@
+/**
+ * cusip validator
+ *
+ * @link        http://formvalidation.io/validators/cusip/
+ * @author      https://twitter.com/nghuuphuoc
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
+ */
 (function($) {
-    $.fn.bootstrapValidator.i18n.cusip = $.extend($.fn.bootstrapValidator.i18n.cusip || {}, {
-        'default': 'Please enter a valid CUSIP number'
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
+        'en_US': {
+            cusip: {
+                'default': 'Please enter a valid CUSIP number'
+            }
+        }
     });
 
-    $.fn.bootstrapValidator.validators.cusip = {
+    FormValidation.Validator.cusip = {
         /**
-         * Validate a CUSIP
+         * Validate a CUSIP number
          * Examples:
          * - Valid: 037833100, 931142103, 14149YAR8, 126650BG6
          * - Invalid: 31430F200, 022615AC2
          *
          * @see http://en.wikipedia.org/wiki/CUSIP
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} [options] Can consist of the following keys:
          * - message: The invalid message
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'cusip');
             if (value === '') {
                 return true;
             }
@@ -49,7 +61,7 @@
             }
 
             sum = (10 - (sum % 10)) % 10;
-            return sum === converted[length - 1];
+            return sum === parseInt(converted[length - 1], 10);
         }
     };
-}(window.jQuery));
+}(jQuery));

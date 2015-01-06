@@ -1,20 +1,32 @@
+/**
+ * siren validator
+ *
+ * @link        http://formvalidation.io/validators/siren/
+ * @author      https://twitter.com/nghuuphuoc
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
+ */
 (function($) {
-    $.fn.bootstrapValidator.i18n.siren = $.extend($.fn.bootstrapValidator.i18n.siren || {}, {
-        'default': 'Please enter a valid SIREN number'
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
+		'en_US': {
+			siren: {
+				'default': 'Please enter a valid SIREN number'
+			}
+		}
     });
 
-	$.fn.bootstrapValidator.validators.siren = {
+	FormValidation.Validator.siren = {
 		/**
 		 * Check if a string is a siren number
 		 *
-		 * @param {BootstrapValidator} validator The validator plugin instance
+		 * @param {FormValidation.Base} validator The validator plugin instance
 		 * @param {jQuery} $field Field element
 		 * @param {Object} options Consist of key:
          * - message: The invalid message
 		 * @returns {Boolean}
 		 */
 		validate: function(validator, $field, options) {
-			var value = $field.val();
+			var value = validator.getFieldValue($field, 'siren');
 			if (value === '') {
 				return true;
 			}
@@ -22,7 +34,7 @@
             if (!/^\d{9}$/.test(value)) {
                 return false;
             }
-            return $.fn.bootstrapValidator.helpers.luhn(value);
+            return FormValidation.Helper.luhn(value);
 		}
 	};
-}(window.jQuery));
+}(jQuery));

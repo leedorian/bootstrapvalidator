@@ -1,20 +1,32 @@
+/**
+ * mac validator
+ *
+ * @link        http://formvalidation.io/validators/mac/
+ * @author      https://twitter.com/nghuuphuoc
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
+ */
 (function($) {
-    $.fn.bootstrapValidator.i18n.mac = $.extend($.fn.bootstrapValidator.i18n.mac || {}, {
-        'default': 'Please enter a valid MAC address'
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
+        'en_US': {
+            mac: {
+                'default': 'Please enter a valid MAC address'
+            }
+        }
     });
 
-    $.fn.bootstrapValidator.validators.mac = {
+    FormValidation.Validator.mac = {
         /**
          * Return true if the input value is a MAC address.
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - message: The invalid message
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'mac');
             if (value === '') {
                 return true;
             }
@@ -22,4 +34,4 @@
             return /^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$/.test(value);
         }
     };
-}(window.jQuery));
+}(jQuery));

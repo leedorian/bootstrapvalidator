@@ -1,9 +1,21 @@
+/**
+ * numeric validator
+ *
+ * @link        http://formvalidation.io/validators/numeric/
+ * @author      https://twitter.com/nghuuphuoc
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
+ */
 (function($) {
-    $.fn.bootstrapValidator.i18n.numeric = $.extend($.fn.bootstrapValidator.i18n.numeric || {}, {
-        'default': 'Please enter a valid float number'
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
+        'en_US': {
+            numeric: {
+                'default': 'Please enter a valid float number'
+            }
+        }
     });
 
-    $.fn.bootstrapValidator.validators.numeric = {
+    FormValidation.Validator.numeric = {
         html5Attributes: {
             message: 'message',
             separator: 'separator'
@@ -16,7 +28,7 @@
         /**
          * Validate decimal number
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Consist of key:
          * - message: The invalid message
@@ -28,7 +40,7 @@
                 return false;
             }
 
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'numeric');
             if (value === '') {
                 return true;
             }
@@ -40,4 +52,4 @@
             return !isNaN(parseFloat(value)) && isFinite(value);
         }
     };
-}(window.jQuery));
+}(jQuery));
